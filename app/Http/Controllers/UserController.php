@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Kamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,12 +57,18 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->kamar = $request->kamar;
         $user->roles = $request->roles;
         $user->save();
         $notifikasi = array(
             'pesan' => 'User berhasil diedit',
             'alert' => 'success',
         );
+        $reqKamar = $request->kamar;
+        $kamar = Kamar::find($reqKamar);
+        $kamar->total_terisi += 1;
+        $kamar->sisa_kamar = $kamar->total_kamar - $kamar->total_terisi;
+        $kamar->save(); 
         return redirect('/user')->with($notifikasi);
     }
 }

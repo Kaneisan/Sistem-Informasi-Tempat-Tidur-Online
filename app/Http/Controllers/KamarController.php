@@ -10,7 +10,7 @@ class KamarController extends Controller
 {
     public function index()
     {
-        $kamars = Kamar::all();
+        $kamars = Kamar::All();
         $countKamar = \DB::table('kamars')->count();
         return view(
             'admin.kamar.Mkamar',
@@ -28,7 +28,8 @@ class KamarController extends Controller
             'nama_ruang' => $request->nama_ruang,
             'kelas_perawatan' => $request->kelas_perawatan,
             'total_kamar' => $request->total_kamar,
-            'sisa_kamar' => $request->sisa_kamar
+            'kamar_terisi' =>$request->kamar_terisi,
+            'sisa_kamar' => $request->total_kamar,
         ]);
 
         return redirect('/kamar');

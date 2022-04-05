@@ -35,19 +35,35 @@
         </div>
     </div>
 </div>
-@foreach($kamar as $kmr)
-<div class="row">
+
+    <div class="row">
+    
     <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{$kmr->nama_ruang}}</h5>
-                <p class="card-text">Total Kamar : {{$kmr->total_kamar}}</p>
-                <p class="card-text">Kamar Kosong : {{$kmr->sisa_kamar}}</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+    @foreach($kamar as $kmr)
+        <div class="card" style="border-radius: 5px; margin-top:10px" >
+            <div class="card-header" style="background-color: #DFDFDE;">
+                Ruang No {{$kmr->id_ruang}}
+            </div>
+            <div class="card-body" style="background-color: #F1DDBF;">
+                <div class="row">
+                    <div class="col-sm-8">
+                    <h5 class="card-title">{{$kmr->nama_ruang}} ({{$kmr->kelas_perawatan}})</h5>
+                <a class="card-link">Last Update : {{$kmr->updated_at}}</a>
+                    </div>
+                    <div class="col-sm-2" style="background-color: #C0EDA6; text-align:center; padding: 15px 0px">
+                        <p class="card-text">Total Kamar : {{$kmr->total_kamar}}</p>
+                    </div>
+                    <div class="col-sm-2" style="background-color: #FFA8A8; text-align:center; padding: 15px 0px">
+                        <p class="card-text">Kamar Kosong : {{$kmr->sisa_kamar}}</p>
+                    </div>
+                </div>
             </div>
         </div>
+        @endforeach
     </div>
+    
 </div>
-@endforeach
+
+
+
 @endsection

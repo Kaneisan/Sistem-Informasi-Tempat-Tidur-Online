@@ -34,8 +34,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$u->name}}</td>
                         <td>{{$u->email}}</td>
-                        <td>{{$u->kamar}}</td>
                         <td>{{$u->roles}}</td>
+                        <td>{{$u->kamar}}</td>
                         <td>
                             <center>
                                 <a href="user/delete/{{$u->id_user}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>

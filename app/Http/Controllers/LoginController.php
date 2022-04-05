@@ -28,7 +28,7 @@ class LoginController extends Controller
             if (auth()->user()->roles == 'Admin') {
                 return redirect()->intended('dashboard');
             } elseif (auth()->user()->roles == 'Pasien') {
-                return redirect()->route('kamar');
+                return redirect()->route('pasien');
             }
             // Kurang Teknisi
         }

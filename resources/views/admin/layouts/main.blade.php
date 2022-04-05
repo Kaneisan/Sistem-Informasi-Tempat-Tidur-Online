@@ -27,7 +27,7 @@
         <ul class="navbar-nav bg-gradient-purple sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">HANSTECH <br><sup>computer service</sup></div>
+                <div class="sidebar-brand-text mx-3">Rumah Sakit <br><sup>Husada</sup></div>
             </a>
             <!-- Divider -->
             @can('manage-all')
@@ -40,95 +40,6 @@
                     <span>Dashboard</span></a>
             </li>
             <!-- Divider -->
-            @endcan
-            @can('manage-keuangan')
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                MANAGE KEUANGAN
-            </div>
-
-            <li class="nav-item {{Request::is('penjualan') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('penjualan') }}">
-                    <i class="fas fa-cash-register"></i>
-                    <span>Penjualan</span></a>
-            </li>
-            @endcan
-            @can('barang')
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                MANAGE KEUANGAN
-            </div>
-            @endcan
-            @can('manage-barang')
-            <li class="nav-item {{Request::is('pembelian') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('pembelian') }}">
-                    <i class="fas fa-dolly-flatbed"></i>
-                    <span>Pembelian</span></a>
-            </li>
-            @endcan
-            @can('manage-keuangan')
-            <li class="nav-item {{Request::is('pelayanan') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('pelayanan') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Pelayanan</span></a>
-            </li>
-
-
-            <li class="nav-item {{Request::is('laporan') ? 'active' : ''}}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-money-bill-wave-alt"></i>
-                    <span>Laporan Keuangan</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-                        <a class="collapse-item text-light" href="{{ route('laporan') }}">Jual Beli</a>
-                        <a class="collapse-item text-light" href="{{route('laporanService')}}">Pelayanan Service</a>
-                    </div>
-                </div>
-            </li>
-            @endcan
-            @can('manage-barang')
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Manage Barang
-            </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item {{Request::is('barang') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('barang') }}">
-                    <i class="fas fa-box-open"></i>
-                    <span>Data Barang</span></a>
-            </li>
-            <li class="nav-item {{Request::is('datarequest') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('datarequest') }}">
-                    <i class="fas fa-boxes"></i>
-                    <span>Request Teknisi</span></a>
-            </li>
-            @endcan
-            @can('teknisi')
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Pelayanan
-            </div>
-            <!-- Nav Item - Charts -->
-            <li class="nav-item {{Request::is('request') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('request') }}">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Form Request</span></a>
-            </li>
-            <li class="nav-item {{Request::is('request_view') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('request_view') }}">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Table Request</span></a>
-            </li>
-            <li class="nav-item {{Request::is('notifikasi') ? 'active' : ''}}">
-                <a class="nav-link" href="{{ route('notifikasi') }}">
-                    <i class="fas fa-comment"></i>
-                    <span>Hubungi Pelanggan</span></a>
-            </li>
             @endcan
             @can('manage-all')
             <hr class="sidebar-divider">
@@ -248,7 +159,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Hanstech Computer Service 2022</span>
+                        <span>Copyright &copy; Rumah Sakit Husada Service 2022</span>
                     </div>
                 </div>
             </footer>
@@ -314,101 +225,6 @@
             $('#edit-email').val(email);
             $('#edit-password').val(password);
             $('#edit-roles').val(roles);
-        });
-
-        $(document).on('click', '#btn-edit-barang', function() {
-            let id_barang = $(this).data('id_barang');
-            let name = $(this).data('name');
-            let merk = $(this).data('merk');
-            let stock = $(this).data('stock');
-            let harga_jual = $(this).data('harga_jual');
-            let harga_beli = $(this).data('harga_beli');
-            let laba = $(this).data('laba');
-            let status = $(this).data('status');
-            let code = $(this).data('code');
-
-            $('#edit-id_barang').val(id_barang);
-            $('#edit-name').val(name);
-            $('#edit-merk').val(merk);
-            $('#edit-harga_jual').val(harga_jual);
-            $('#edit-harga_beli').val(harga_beli);
-            $('#edit-laba').val(laba);
-            $('#edit-stock').val(stock);
-            $('#edit-status').val(stock);
-            $('#edit-code').val(code);
-        });
-
-        $(document).on('click', '#btn-edit-ongkos', function() {
-            let id_pelayanan = $(this).data('id_pelayanan');
-            let biaya = $(this).data('biaya');
-
-            $('#edit-id_pelayanan').val(id_pelayanan);
-            $('#edit-biaya').val(biaya);
-        });
-    </script>
-    <script>
-        let harga = document.getElementById('bayar').value;
-        $('#terima').keyup(
-            function() {
-                let bayar = $('#terima').val();
-                let total = parseFloat(bayar) - parseFloat(harga);
-                $('#kembali').val(total);
-            }
-        );
-    </script>
-    <script>
-        const dataTable1 = new simpleDatatables.DataTable("#keuangan");
-        $('#detail-laporan').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var tanggal = button.data('tanggal') // Extract info from data-* attributes\
-            console.log(tanggal);
-            var modal = $(this)
-            dataTable1.init({
-                searchable: false,
-                fixedHeight: false,
-            });
-            modal.find('.modal-titles').text('Detail Laporan Tanggal ' + tanggal)
-            $.ajax({
-                url: '/api/laporan/' + tanggal,
-                type: 'get',
-                success: function(data) {
-                    // console.log(data);
-                    dataTable1.rows().add(data);
-                }
-            });
-        })
-        $('#detail-laporan').on('hidden.bs.modal', function(e) {
-            dataTable1.destroy();
-        })
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('#type').keyup(function() {
-                var query = $(this).val();
-                if (query != '') {
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{ route('pelayanan.fetch') }}",
-                        method: "POST",
-                        data: {
-                            query: query,
-                            _token: _token
-                        },
-                        success: function(data) {
-                            $('#typelist').fadeIn();
-                            $('#typelist').html(data);
-                        }
-                    });
-                }
-            });
-
-            $(document).on('click', 'li', function() {
-                $('#type').val($(this).text());
-                $('#typelist').fadeOut();
-            });
-
-
         });
     </script>
     <script src="js/custom.js"></script>
